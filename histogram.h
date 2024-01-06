@@ -1,4 +1,4 @@
-//checks if a given number is a power of 2
+// checks if a given number is a power of 2
 int is_power(int n)
 {
 	while (n % 2 == 0) {
@@ -11,6 +11,9 @@ int is_power(int n)
 
 int get_command(char *command, int *x, int *y)
 {
+	// get the parameters
+	// return 1 if exactly 2 parameters are given
+	// and -1 if there are too many or less than needed
 	fgets(command, 30, stdin);
 	char *word = strtok(command, "\n ");
 	if (is_number(word)) {
@@ -45,12 +48,12 @@ void print_histogram(image p)
 		return;
 	}
 
-	if (res == -1) {
+	if (res == -1) { // check if the pattern is matched by the given command
 		printf("Invalid command\n");
 		return;
 	}
 
-	if (p.pixel_no == 3) {
+	if (p.pixel_no == 3) { // check if the image uses colors
 		printf("Black and white image needed\n");
 		return;
 	}
@@ -65,7 +68,7 @@ void print_histogram(image p)
 	int fr[256];
 	for (int i = 0; i < 256; i++)
 		fr[i] = 0;
-	//get how many times each possible value appears in the image's matrix
+	// get how many times each possible value appears in the image's matrix
 	for (int i = 0; i < p.height; i++) {
 		for (int j = 0; j < p.width; j++) {
 			fr[(int)p.matrix[i][j].val[0]]++;
@@ -83,6 +86,8 @@ void print_histogram(image p)
 	int max = -1;
 	for (int i = 0; i < y; i++) {
 		for (int j = 0; j < 256 / y; j++) {
+			// we divide the frequency array into y bins with
+			// 256 / y elements each
 			bins[i] += fr[i * 256 / y + j];//get the sum for each bin
 		}
 		if (bins[i] > max) {
