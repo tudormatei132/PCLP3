@@ -1,4 +1,3 @@
-##### //Copyright Matei Tudor-Andrei 314CAa
 # Image Editor
 
 The image editor uses a custom structure, named image, which contains data 
